@@ -1,17 +1,19 @@
 <?php
+
 namespace xhfx/join;
+
 use pocketmine\plugin\PluginBase;  
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerChatEvent; // Why you need this on JoinMOTD?
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
-class Main extends PluginBase{ //Class name needs to be same as the file name.
-        public function translateColors($symbol, $message){
-        
-        $symbol = &;
+class Main extends PluginBase implements Listener{ //Class name needs to be same as the file name.
+
+        public function translateColors($message, $symbol = &){
+
                 $message = str_replace($symbol."0", TextFormat::BLACK, $message);
                 $message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
                 $message = str_replace($symbol."2", TextFormat::DARK_GREEN, $message);
@@ -43,6 +45,7 @@ class Main extends PluginBase{ //Class name needs to be same as the file name.
                 $this->getLogger()->info(TextFormat::DARKRED . "Join MOTD has Been Loaded!!!");
         }
         public function onEnable(){
+                $this->getServer()->getPluginManager()->registerEvents($this, $this);
                 $this->getLogger()->info(TextFormat::DARKRED . "Join MOTD has been Enabled!");
                 $this->saveDefaultConfig(); //Saves the config if you need one.
         }
@@ -55,9 +58,9 @@ class Main extends PluginBase{ //Class name needs to be same as the file name.
   $jmessage3 = $this->getConfig()->get("joinmessage3");
   $jmessage4 = $this->getConfig()->get("joinmessage4");
   $player = $event->getPlayer();
-  $player->sendMessage($jmessage1);
-  $player->sendMessage($jmessage2);
-  $player->sendMessage($jmessage3);
-  $player->sendMessage($jmessage4);
+  $player->sendMessage($this->translateColors($jmessage1));
+  $player->sendMessage($this->translateColors($jmessage2));
+  $player->sendMessage($this->translateColors($jmessage3));
+  $player->sendMessage($this->translateColors($jmessage4));
       }
   }
