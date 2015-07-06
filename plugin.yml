@@ -1,6 +1,6 @@
 name: JoinMOTD
 description: JoinMOTD plugin
-namespace: xhfx/join/Main;
+main: xhfx/join/Main;
 author: xhfx
 api: 1.12.0
 website: google.com
