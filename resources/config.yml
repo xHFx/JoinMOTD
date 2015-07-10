@@ -1,6 +1,8 @@
- ---
- joinmessage1: "&c=========================="
- joinmessage2: "&dWelcome to DarkRealmsPvP || Vote with /vote"
- joinmessage3: "&dJoin our forums DaekRealms.cf"
- joinmessage4: "&c=========================="
- ...
+---
+joinmessages:
+  - "&c=========================="
+  - "&dWelcome to The Server || Vote with /vote"
+  - "&dJoin our forums Website.com"
+  - "&c=========================="
+...
+
