@@ -1,5 +1,5 @@
 <?php
-namespace xhfx/join;
+namespace xhfx\join;
 
 use pocketmine\plugin\PluginBase;  
 use pocketmine\event\Listener;
